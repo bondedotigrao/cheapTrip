@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.entidades.Carro;
 import model.implementacoes.CarroHibernateDAO;
+import model.negocio.CarroDAO;
 
 /**
  *
@@ -16,34 +17,34 @@ import model.implementacoes.CarroHibernateDAO;
 @ViewScoped
 public class CarroController {
 
-    private final CarroHibernateDAO carroHDAO;
+    private final CarroDAO carroDao;
     private Carro cadCarro;
     private Carro selectedCarro;
 
     public CarroController() {
-        this.carroHDAO = CarroHibernateDAO.getInstance();
+        this.carroDao = new CarroDAO();
         this.cadCarro = new Carro();
     }
 
     public void cadastrar() {
-        this.carroHDAO.cadastrar(this.cadCarro);
+        this.carroDao.cadastrar(this.cadCarro);
         this.cadCarro = new Carro();
     }
 
     public String alterar() {
-        this.carroHDAO.alterar(this.selectedCarro);
+        this.carroDao.alterar(this.selectedCarro);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Carro alterado com sucesso!"));
 
         return "index.xhtml";
     }
     
     public void deletar(){
-        this.carroHDAO.deletar(this.selectedCarro);
+        this.carroDao.deletar(this.selectedCarro);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O carro foi deletado."));
     }
     
     public List<Carro> recuperarTodos(){
-        return this.carroHDAO.recuperarTodos();
+        return this.carroDao.recuperarTodos();
     }
 
     public Carro getCadCarro() {

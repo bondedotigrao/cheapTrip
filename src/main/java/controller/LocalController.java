@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.entidades.Local;
-import model.implementacoes.LocalHibernateDAO;
+import model.negocio.LocalDAO;
 
 /**
  *
@@ -16,12 +16,12 @@ import model.implementacoes.LocalHibernateDAO;
 @ViewScoped
 public class LocalController {
 
-    private final LocalHibernateDAO localHibernate;
+    private final LocalDAO localHibernate;
     private Local cadLocal;
     private Local selectedLocal;
 
     public LocalController() {
-        this.localHibernate = LocalHibernateDAO.getInstance();
+        this.localHibernate = new LocalDAO();
         this.cadLocal = new Local();
     }
 

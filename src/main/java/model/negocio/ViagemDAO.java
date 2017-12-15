@@ -10,7 +10,11 @@ import model.interfaces.DAO;
  * @author Jarvis
  */
 public class ViagemDAO {
-    private final DAO<Viagem> dao = ViagemHibernateDAO.getInstance();
+    private final DAO<Viagem> dao;
+    
+    public ViagemDAO(){
+        this.dao = ViagemHibernateDAO.getInstance();
+    }
     
     public void cadastrar(Viagem viagem){
         if(((ViagemHibernateDAO)dao).recuperar(viagem.getId_viagem()) == null){

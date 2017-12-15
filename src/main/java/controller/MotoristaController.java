@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.entidades.Motorista;
-import model.implementacoes.MotoristaHibernateDAO;
+import model.negocio.MotoristaDAO;
 
 /**
  *
@@ -15,12 +15,12 @@ import model.implementacoes.MotoristaHibernateDAO;
 @ManagedBean
 @ViewScoped
 public class MotoristaController {
-    private final MotoristaHibernateDAO motoristaHibernate;
+    private final MotoristaDAO motoristaHibernate;
     private Motorista cadMotorista;
     private Motorista selectedMotorista;
 
     public MotoristaController() {
-        this.motoristaHibernate = MotoristaHibernateDAO.getInstance();
+        this.motoristaHibernate = new MotoristaDAO();
         this.cadMotorista = new Motorista();
     }
     

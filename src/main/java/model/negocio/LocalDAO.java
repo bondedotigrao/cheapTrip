@@ -10,11 +10,22 @@ import model.interfaces.DAO;
  * @author Jarvis
  */
 public class LocalDAO {
-    private final DAO<Local> dao = LocalHibernateDAO.getInstance();
+    private final DAO<Local> dao;
+
+    public LocalDAO() {
+        this.dao = LocalHibernateDAO.getInstance();
+    }
+        
     
     public void cadastrar(Local local){
         if(((LocalHibernateDAO)dao).recuperar(local.getId_local()) == null){
             this.dao.cadastrar(local);
+        }
+    }
+    
+    public void alterar(Local local){
+      if(((LocalHibernateDAO)dao).recuperar(local.getId_local()) == null){
+            this.dao.alterar(local);
         }
     }
     

@@ -10,8 +10,11 @@ import model.interfaces.DAO;
  * @author Jarvis
  */
 public class CarroDAO {
-    private final DAO<Carro> dao = CarroHibernateDAO.getInstance();
-    
+    private final DAO<Carro> dao;
+
+    public CarroDAO() {
+        dao = CarroHibernateDAO.getInstance();
+    }
     public void cadastrar(Carro carro){
         if(((CarroHibernateDAO)dao).getInstance().recuperar(carro.getId_carro()) == null){
             this.dao.cadastrar(carro);
