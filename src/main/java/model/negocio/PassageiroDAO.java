@@ -49,4 +49,12 @@ public class PassageiroDAO {
         }
         return ((PassageiroHibernateDAO)dao).recuperarPorCpf(cpf);
     }
+    
+    public boolean login(String login,String senha){
+        if(login == null || senha == null){
+            return false;
+        }
+        
+        return ((PassageiroHibernateDAO)dao).login(login, senha);
+    }
 }
