@@ -49,4 +49,11 @@ public class MotoristaDAO {
       public List<Motorista> recuperarTodos(){
           return ((MotoristaHibernateDAO)dao).recuperarTodos();
       }
+      
+      public boolean login(String login,String senha){
+          if(login == null || senha == null){
+              return false;
+          }
+          return ((MotoristaHibernateDAO)dao).login(login, senha);
+      }
 }
