@@ -99,7 +99,7 @@ public class MotoristaHibernateDAO implements MotoristaInterfaceDAO{
         List<Motorista> motoristas = null;
         
         try{
-            motoristas = (List) session.createQuery("From motorista").getResultList();
+            motoristas = (List) session.createQuery("From Motorista").getResultList();
         }catch(Exception recTodosMotoristas){
             System.out.println(recTodosMotoristas.getCause()
                     + "\nOcorreu um erro ao recuperar todos os motoristas");

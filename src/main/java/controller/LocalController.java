@@ -3,7 +3,7 @@ package controller;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.entidades.Local;
 import model.negocio.LocalDAO;
@@ -13,12 +13,12 @@ import model.negocio.LocalDAO;
  * @author Jarvis
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class LocalController {
 
     private final LocalDAO localHibernate;
-    private Local cadLocal;
     private Local selectedLocal;
+    private Local cadLocal;
 
     public LocalController() {
         this.localHibernate = new LocalDAO();
@@ -27,7 +27,14 @@ public class LocalController {
 
     public void cadastrar() {
         this.localHibernate.cadastrar(this.cadLocal);
-        this.cadLocal = new Local();
+    }
+
+    public Local getCadLocal() {
+        return cadLocal;
+    }
+
+    public void setCadLocal(Local cadLocal) {
+        this.cadLocal = cadLocal;
     }
 
     public void alterar() {
@@ -42,14 +49,6 @@ public class LocalController {
 
     public List<Local> recuperarTodos() {
         return this.localHibernate.recuperarTodos();
-    }
-
-    public Local getCadLocal() {
-        return cadLocal;
-    }
-
-    public void setCadLocal(Local cadLocal) {
-        this.cadLocal = cadLocal;
     }
 
     public Local getSelectedLocal() {

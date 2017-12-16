@@ -1,8 +1,9 @@
 package model.entidades;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,15 +15,15 @@ import javax.persistence.Id;
  * @author Mark IV
  */
 @Entity
-@ManagedBean
-@RequestScoped
-public class Local {
+@ManagedBean(name = "local")
+@ViewScoped
+public class Local implements Serializable {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private int id_local;
-    @Column(nullable = false)
+    @Column(length = 18, nullable = false)
     private String estado;
-    @Column(nullable = false)
+    @Column(length = 15,nullable = false)
     private String cidade;
     @Column(length = 8)
     private String cep;

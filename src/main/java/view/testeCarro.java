@@ -1,6 +1,10 @@
 package view;
 
+import controller.CarroController;
 import model.entidades.Carro;
+import model.entidades.Local;
+import model.implementacoes.CarroHibernateDAO;
+import model.implementacoes.LocalHibernateDAO;
 import model.negocio.CarroDAO;
 
 /**
@@ -9,12 +13,7 @@ import model.negocio.CarroDAO;
  */
 public class testeCarro {
     public static void main(String args[]){
-     Carro carro = new Carro("MM", 3, "praca");
-    
-     CarroDAO cd = new CarroDAO();
-     
-     cd.cadastrar(carro);
-
+ 
     }
 
 }

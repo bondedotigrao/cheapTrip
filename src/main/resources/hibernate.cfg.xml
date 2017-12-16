@@ -46,7 +46,10 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/CheapTrip</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">ifpe</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
     <mapping class="model.entidades.Carro"/>
+    <mapping class="model.entidades.Local"/>
+    <mapping class="model.entidades.Motorista"/>
+    <mapping class="model.entidades.Passageiro"/>
+    <mapping class="model.entidades.Viagem"/>
   </session-factory>
 </hibernate-configuration>

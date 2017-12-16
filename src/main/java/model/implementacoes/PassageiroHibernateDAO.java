@@ -109,7 +109,7 @@ public class PassageiroHibernateDAO implements PassageiroInterfaceDAO {
         List<Passageiro> passageiros = null;
         
         try{
-            passageiros = (List) session.createQuery("From passageiro").getResultList();
+            passageiros = (List) session.createQuery("From Passageiro").getResultList();
         }catch(Exception recTodosPassageirosError){
             System.out.println(recTodosPassageirosError.getCause()
             + "\nOcorreu um erro ao recuperar todos os passageiros.");

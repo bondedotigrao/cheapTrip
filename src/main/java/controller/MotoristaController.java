@@ -3,18 +3,22 @@ package controller;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import model.entidades.Carro;
+import model.entidades.Local;
 import model.entidades.Motorista;
 import model.negocio.MotoristaDAO;
+import org.primefaces.event.FlowEvent;
 
 /**
  *
  * @author Mark IV
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class MotoristaController {
+
     private final MotoristaDAO motoristaHibernate;
     private Motorista cadMotorista;
     private Motorista selectedMotorista;
@@ -23,45 +27,51 @@ public class MotoristaController {
         this.motoristaHibernate = new MotoristaDAO();
         this.cadMotorista = new Motorista();
     }
-    
-    public String cadastrar(){
+
+    public String cadastrar(Local local, Carro carro) {
+        this.cadMotorista.setLocal(local);
+        this.cadMotorista.setCarro(carro);
+
         this.motoristaHibernate.cadastrar(this.cadMotorista);
+
         this.cadMotorista = new Motorista();
-        
+
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista cadastrado com sucesso!"));
-        
+
         return "index.xhtml";
     }
-    
-    public String alterar(){
+
+    public String alterar(Local local,Carro carro) {
+        this.selectedMotorista.setLocal(local);
+        this.selectedMotorista.setCarro(carro);
         this.motoristaHibernate.alterar(this.selectedMotorista);
-   
+
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista alterado com sucesso!"));
-        
+
         return "index.xhtml";
     }
-    
-    public String deletar(){
+
+    public String deletar() {
         this.motoristaHibernate.deletar(this.selectedMotorista);
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista deletado com sucesso!"));
-        
+
         return "index.xhtml";
     }
-    
-    public Motorista recuperar(){
+
+    public Motorista recuperar() {
         return this.motoristaHibernate.recuperar(this.selectedMotorista.getId_motorista());
     }
-    
-    public List<Motorista> recuperarTodos(){
+
+    public List<Motorista> recuperarTodos() {
         return this.motoristaHibernate.recuperarTodos();
     }
-    
-    public Motorista recuperarPorCpf(){
+
+    public Motorista recuperarPorCpf() {
         return this.motoristaHibernate.recuperarPorCpf(this.selectedMotorista.getCpf());
     }
-    
-    public boolean login(){
+
+    public boolean login() {
         return false;
     }
 
@@ -80,6 +90,4 @@ public class MotoristaController {
     public void setSelectedMotorista(Motorista selectedMotorista) {
         this.selectedMotorista = selectedMotorista;
     }
-    
-    
 }

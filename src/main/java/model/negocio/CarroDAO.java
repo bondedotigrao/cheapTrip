@@ -16,9 +16,9 @@ public class CarroDAO {
         dao = CarroHibernateDAO.getInstance();
     }
     public void cadastrar(Carro carro){
-        if(((CarroHibernateDAO)dao).getInstance().recuperar(carro.getId_carro()) == null){
+      
             this.dao.cadastrar(carro);
-        } 
+       
     }
     
     public void alterar(Carro carro){

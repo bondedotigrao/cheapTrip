@@ -3,8 +3,9 @@ package controller;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import model.entidades.Local;
 import model.entidades.Passageiro;
 import model.negocio.PassageiroDAO;
 
@@ -13,7 +14,7 @@ import model.negocio.PassageiroDAO;
  * @author Jarvis
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class PassageiroController {
     private final PassageiroDAO passageiroHibernate;
     private Passageiro cadPassageiro;
@@ -24,7 +25,8 @@ public class PassageiroController {
         this.cadPassageiro = new Passageiro();
     }
     
-    public String cadastrar(){
+    public String cadastrar(Local local){
+        this.cadPassageiro.setLocal(local);
         this.passageiroHibernate.cadastrar(this.cadPassageiro);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro realizado com sucesso!"));
