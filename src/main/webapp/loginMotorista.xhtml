@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login Motorista</title>
+    </h:head>
+    <h:body>
+        <p:dialog visible="true">
+             
+             <h:form id="formLogin">
+                 
+              <p:outputLabel value="Login*:" />
+              <p:inputMask id="txtCpf" binding="#{Login}" mask="f" required="true"
+                           maxlength="12" requiredMessage="O CPF precisa ser preenchido!" />
+              
+
+                <br/>
+                <p:outputLabel value="Senha*: " />
+				<p:password id="txtSenha" binding="#{senhaLogin}" required="true"
+					maxlength="12" requiredMessage="A senha precisa ser preenchido!" />
+                                <br/>
+<!--                         <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />-->
+               
+               
+                                <p:commandButton value="logar" action="#{loginMotorista.login(Login.value, senhaLogin.value)}" />
+             
+             
+             </h:form>
+        </p:dialog>
+    </h:body>
+</html>
+

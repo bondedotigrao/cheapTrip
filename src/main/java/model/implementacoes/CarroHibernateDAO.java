@@ -49,7 +49,7 @@ public class CarroHibernateDAO implements CarroInterfaceDAO {
     public Carro recuperar(int codigo) {
         Session session = this.sessions.openSession();
         try {
-            return (Carro) session.createQuery("From carro Where id_carro=" + codigo).getResultList().get(0);
+            return (Carro) session.createQuery("From Carro Where id_carro=" + codigo).getResultList().get(0);
         } catch (Exception recCarroError) {
             return null;
         }finally{
@@ -95,7 +95,7 @@ public class CarroHibernateDAO implements CarroInterfaceDAO {
         List<Carro> carros = null;
 
         try {
-            carros = (List) session.createQuery("From carro").getResultList();
+            carros = (List) session.createQuery("From Carro").getResultList();
         } catch (Exception recTodosCarrosError) {
             System.out.println(recTodosCarrosError.getCause()
                     + "\nOcorreu um erro ao recuperar todos os carrros.");

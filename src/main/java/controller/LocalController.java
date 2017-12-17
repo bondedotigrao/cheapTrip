@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -14,7 +15,7 @@ import model.negocio.LocalDAO;
  */
 @ManagedBean
 @SessionScoped
-public class LocalController {
+public class LocalController implements Serializable{
 
     private final LocalDAO localHibernate;
     private Local selectedLocal;
@@ -37,9 +38,11 @@ public class LocalController {
         this.cadLocal = cadLocal;
     }
 
-    public void alterar() {
-        this.localHibernate.alterar(this.selectedLocal);
+    public String alterar(Local local) {
+        this.localHibernate.alterar(local);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Local alterado com sucesso!"));
+        
+        return "index.xhtml";
     }
 
     public void deletar() {

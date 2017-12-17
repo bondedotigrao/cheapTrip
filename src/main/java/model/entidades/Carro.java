@@ -2,8 +2,6 @@ package model.entidades;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +13,6 @@ import javax.persistence.Id;
  * @author Mark IV
  */
 @Entity
-@ManagedBean(name = "car")
-@ViewScoped
 public class Carro implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -48,7 +48,7 @@ public class PassageiroHibernateDAO implements PassageiroInterfaceDAO {
        Session session = this.sessions.openSession();
         
         try{
-            return (Passageiro) session.createQuery("From passageiro Where id_passageiro=" + codigo).getResultList().get(0);
+            return (Passageiro) session.createQuery("From Passageiro Where id_passageiro=" + codigo).getResultList().get(0);
         }catch(Exception recPassageiroError){
             System.out.println(recPassageiroError.getCause()
             + "\nOcorreu um erro ao recuperar um passageiro");
@@ -92,7 +92,7 @@ public class PassageiroHibernateDAO implements PassageiroInterfaceDAO {
            Session session = this.sessions.openSession();
         
         try{
-            return (Passageiro) session.createQuery("From passageiro Where cpf=" + cpf).getResultList().get(0);
+            return (Passageiro) session.createQuery("From Passageiro Where cpf=" + cpf).getResultList().get(0);
         }catch(Exception recPassageiroError){
             System.out.println(recPassageiroError.getCause()
             + "\nOcorreu um erro ao recuperar um passageiro");

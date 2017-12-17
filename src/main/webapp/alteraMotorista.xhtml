@@ -7,73 +7,34 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-            <h:form>
-            <p:dialog id="dialCarro" visible="true" resizable="false" modal="false"
-                      widgetVar="widDialCarro">
-                <p:tab>
-                    <p:panelGrid columns="2">
-                        <h:outputText value="Marca *"/>
-                        <p:inputText value="#{carroController.cadCarro.marca}" />
-
-                        <h:outputText value="Modelo *"/>
-                        <p:inputText value="#{carroController.cadCarro.modelo}"/>
-
-                        <h:outputText value="Placa *"/>
-                        <p:inputText value="#{carroController.cadCarro.placa}" required="true"/>
-                    </p:panelGrid>
-                    <p:commandButton value="Next" action="#{carroController.cadastrar()}"
-                                     oncomplete="PF('widDialLocal').show()" onclick="PF('widDialCarro').hide()"/>
-                </p:tab> 
-            </p:dialog>
-        </h:form>
-        <h:form>
-               <p:dialog id="dialLocal" visible="false" resizable="false" modal="false"
-                      widgetVar="widDialLocal">
-                <p:tab>
-                    <p:panelGrid columns="2">
-                        <h:outputText value="Estado *" />
-                        <p:inputText value="#{localController.cadLocal.estado}"/>
-
-                        <h:outputText value="Cidade *"/>
-                        <p:inputText value="#{localController.cadLocal.cidade}"/>
-
-                        <h:outputText value="CEP *"/>
-                        <p:inputText value="#{localController.cadLocal.cep}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="Next" action="#{localController.cadastrar()}"
-                                     oncomplete="PF('widDialMotorista').show()" onclick="PF('widDialLocal').hide()"/>
-                </p:tab> 
-            </p:dialog>
-        </h:form>
-
-        <h:form>
-            <p:dialog id="dialMotorista" visible="false" resizable="false" modal="true" widgetVar="widDialMotorista">
-                <p:tab>
-                    <p:panelGrid columns="2">
-                        <h:outputText value="Nome *"/>
-                        <p:inputText value="#{motoristaController.selectedMotorista.nome}" required="true"/>
-
-                        <h:outputText value="CPF *"/>
-                        <p:inputText value="#{motoristaController.selectedMotorista.cpf}" required="true"/>
-
-                        <h:outputText value="E-mail *"/>
-                        <p:inputText value="#{motoristaController.selectedMotorista.email}"/>
-
-                        <h:outputText value="Login *"/>
-                        <p:inputText value="#{motoristaController.selectedMotorista.login}" required="true"/>
-                        
-                         <h:outputText value="Senha *"/>
-                         <p:password value="#{motoristaController.selectedMotorista.senha}" required="true"/>
-                        
-
-                    </p:panelGrid>
+        <h:form id="alteraMotorista">
+            <p:fieldset>
+                <p:panelGrid columns="2">
+                    <h:outputText value="Nome: "/>
+                    <p:inputText value="#{motoristaController.selectedMotorista.nome}" required="true"/>
                     
-                    <p:commandButton value="Cadastrar" action="#{motoristaController.alterar(localController.selectedLocal,carroController.selectedCarro)}"/>
-                </p:tab>
-            </p:dialog>
+                    <h:outputText value="CPF: "/>
+                    <p:inputText value="#{motoristaController.selectedMotorista.cpf}" required="true"/>
+                    
+                    <h:outputText value="E-mail: "/>
+                    <p:inputText value="#{motoristaController.selectedMotorista.email}"/>
+                    
+                    <h:outputText value="Login: "/>
+                    <p:inputText value="#{motoristaController.selectedMotorista.login}" required="true"/>
+                    
+                    <h:outputText value="Senha: "/>
+                    <p:inputText value="#{motoristaController.selectedMotorista.senha}" required="true"/>
+                </p:panelGrid>
+                <p:commandButton value="Alterar" action="#{motoristaController.alterar(motoristaController.selectedMotorista.local
+                                                           ,motoristaController.selectedMotorista.carro)}"/>
+                
+                <p:commandButton value="Alterar carro" action="alteraCarro.xhtml"/>
+                
+                <p:commandButton value="Alterar endereço" action="alteraLocal.xhtml"/>
+                
+            </p:fieldset>
 
         </h:form>
-
     </h:body>
 </html>
 

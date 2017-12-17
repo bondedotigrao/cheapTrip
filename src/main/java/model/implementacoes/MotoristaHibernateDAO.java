@@ -49,7 +49,7 @@ public class MotoristaHibernateDAO implements MotoristaInterfaceDAO{
     public Motorista recuperar(int codigo) {
         Session session = this.sessions.openSession();
         try{
-            return (Motorista) session.createQuery("From motorista Where id_motorista=" + codigo).getResultList().get(0);
+            return (Motorista) session.createQuery("From Motorista Where id_motorista=" + codigo).getResultList().get(0);
         }catch(Exception recMotoristaError){
             System.out.println(recMotoristaError.getCause()
                         + "\nOcorreu um erro ao recuperar um motorista");

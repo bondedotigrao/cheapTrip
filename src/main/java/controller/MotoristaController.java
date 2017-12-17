@@ -71,8 +71,8 @@ public class MotoristaController {
         return this.motoristaHibernate.recuperarPorCpf(this.selectedMotorista.getCpf());
     }
 
-    public boolean login() {
-        return false;
+    public boolean login(String login,String senha) {
+       return this.motoristaHibernate.login(login, senha);
     }
 
     public Motorista getCadMotorista() {
@@ -90,4 +90,5 @@ public class MotoristaController {
     public void setSelectedMotorista(Motorista selectedMotorista) {
         this.selectedMotorista = selectedMotorista;
     }
+    
 }

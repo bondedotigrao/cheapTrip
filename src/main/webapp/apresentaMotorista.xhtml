@@ -36,11 +36,12 @@
             
             <p:column>
                 <f:facet name="header">
-                   
+                   <h:outputText value="Visualizar"/>
                 </f:facet>
-                 <h:outputText value="Operações"/>
+                 
                     <p:commandButton value="Visualizar" oncomplete="PF('widDialVisualizaMotorista').show()"
                                      update="table"/>
+                    <p:commandButton value="alterar" action="alteraMotorista.xhtml"/>
             </p:column>
             </p:dataTable>
              <h:form>

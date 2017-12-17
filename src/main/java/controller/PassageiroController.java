@@ -34,7 +34,8 @@ public class PassageiroController {
         return "index.xhtml";
     }
     
-    public String alterar(){
+    public String alterar(Local local){
+        this.selectedPassageiro.setLocal(local);
         this.passageiroHibernate.alterar(this.selectedPassageiro);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Passageiro " + this.selectedPassageiro.getNome() + " alterado com sucesso"));

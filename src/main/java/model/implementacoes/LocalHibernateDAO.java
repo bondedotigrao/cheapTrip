@@ -48,7 +48,7 @@ public class LocalHibernateDAO implements LocaInterfacelDAO{
         Session session = this.sessions.openSession();
 
         try {
-            return (Local) session.createQuery("From local Where id_local=" + codigo).getResultList().get(0);
+            return (Local) session.createQuery("From Local Where id_local=" + codigo).getResultList().get(0);
         } catch (Exception recLocalError) {
            return null;
         } finally {
@@ -92,7 +92,7 @@ public class LocalHibernateDAO implements LocaInterfacelDAO{
         List<Local> locais = null;
 
         try {
-            locais = (List) session.createQuery("From local").getResultList();
+            locais = (List) session.createQuery("From Local").getResultList();
         } catch (Exception recTodosLocaissError) {
             System.out.println(recTodosLocaissError.getCause()
                     + "\nOcorreu um erro ao recuperar todos os locais.");

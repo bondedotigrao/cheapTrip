@@ -13,7 +13,11 @@ import model.negocio.CarroDAO;
  */
 public class testeCarro {
     public static void main(String args[]){
- 
+        Local local = LocalHibernateDAO.getInstance().recuperar(4);
+        
+        local.setCidade("X");
+        
+        LocalHibernateDAO.getInstance().alterar(local);
     }
 
 }

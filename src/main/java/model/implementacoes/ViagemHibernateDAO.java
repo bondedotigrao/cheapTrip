@@ -49,7 +49,7 @@ public class ViagemHibernateDAO implements ViagemInterfaceDAO {
         Session session = this.sessions.openSession();
 
         try {
-            return (Viagem) session.createQuery("From viagem Where id_viagem=" + codigo).getResultList().get(0);
+            return (Viagem) session.createQuery("From Viagem Where id_viagem=" + codigo).getResultList().get(0);
         } catch (Exception recViagemError) {
             System.out.println(recViagemError.getCause()
                     + "\nOcorreu um erro ao recuperar uma viagem");
@@ -96,7 +96,7 @@ public class ViagemHibernateDAO implements ViagemInterfaceDAO {
         List<Viagem> viagem = null;
 
         try {
-            viagem = (List) session.createQuery("From viagem").getResultList();
+            viagem = (List) session.createQuery("From Viagem").getResultList();
         } catch (Exception recTodosLocaissError) {
             System.out.println(recTodosLocaissError.getCause()
                     + "\nOcorreu um erro ao recuperar todas viagens.");

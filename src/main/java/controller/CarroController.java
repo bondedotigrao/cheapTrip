@@ -30,7 +30,8 @@ public class CarroController {
 
     }
 
-    public String alterar() {
+    public String alterar(Carro carro) {
+        this.selectedCarro = carro;
         this.carroDao.alterar(this.selectedCarro);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Carro alterado com sucesso!"));
 
