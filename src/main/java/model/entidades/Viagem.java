@@ -2,9 +2,6 @@ package model.entidades;
 
 import java.util.List;
 import java.util.Objects;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,8 +16,6 @@ import javax.persistence.OneToOne;
  * @author Mark IV
  */
 @Entity
-@ManagedBean
-@RequestScoped
 public class Viagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

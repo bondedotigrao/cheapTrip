@@ -12,7 +12,7 @@
              <h:form id="formLogin">
                  
               <p:outputLabel value="Login*:" />
-              <p:inputMask id="txtCpf" binding="#{Login}" mask="f" required="true"
+              <p:inputText id="txtCpf" binding="#{Login}" required="true"
                            maxlength="12" requiredMessage="O CPF precisa ser preenchido!" />
               
 
@@ -24,7 +24,7 @@
 <!--                         <p:commandButton value="logar" action="#{loginController.realizarLoginPaciente(Login, senhaLogin)}" />-->
                
                
-                                <p:commandButton value="logar" action="#{loginMotorista.login(Login.value, senhaLogin.value)}" />
+                                <p:commandButton value="logar" action="#{loginMotorista.realizarLogin(Login.value, senhaLogin.value)}" />
              
              
              </h:form>

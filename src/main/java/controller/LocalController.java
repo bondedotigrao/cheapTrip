@@ -15,7 +15,7 @@ import model.negocio.LocalDAO;
  */
 @ManagedBean
 @SessionScoped
-public class LocalController implements Serializable{
+public class LocalController{
 
     private final LocalDAO localHibernate;
     private Local selectedLocal;
@@ -39,7 +39,8 @@ public class LocalController implements Serializable{
     }
 
     public String alterar(Local local) {
-        this.localHibernate.alterar(local);
+        this.selectedLocal = local;
+        this.localHibernate.alterar(this.selectedLocal);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Local alterado com sucesso!"));
         
         return "index.xhtml";

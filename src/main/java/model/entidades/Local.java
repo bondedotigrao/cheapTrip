@@ -2,8 +2,6 @@ package model.entidades;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +13,6 @@ import javax.persistence.Id;
  * @author Mark IV
  */
 @Entity
-@ManagedBean(name = "local")
-@ViewScoped
 public class Local implements Serializable {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -69,7 +65,17 @@ public class Local implements Serializable {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + this.id_local;
+        hash = 41 * hash + Objects.hashCode(this.estado);
+        hash = 41 * hash + Objects.hashCode(this.cidade);
+        hash = 41 * hash + Objects.hashCode(this.cep);
+        return hash;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -96,6 +102,8 @@ public class Local implements Serializable {
         }
         return true;
     }
+    
+
 
     @Override
     public String toString() {

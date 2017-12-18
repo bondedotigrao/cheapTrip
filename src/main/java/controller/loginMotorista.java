@@ -4,41 +4,48 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import model.entidades.Motorista;
 
 /**
  *
  * @author Jarvis
  */
-@ManagedBean
+@ManagedBean(name = "loginMotorista")
 @SessionScoped
 public class loginMotorista {
-    private Motorista motoristaLogado = null;
+    private  Motorista motoristaLogado = null;
 
     public loginMotorista() {
-        this.motoristaLogado = new Motorista();
     }
 
-    public Motorista getMotoristaLogado() {
-        return (Motorista) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("motoristaLogado");
-    }
-
-    public void setMotoristaLogado(Motorista motoristaLogado) {
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("motoristaLogado", this.motoristaLogado);
-    }
     
     public String realizarLogin(String login,String senha){
-     List<Motorista> motoristas = new MotoristaController().recuperarTodos();
+     FacesContext fc = FacesContext.getCurrentInstance();
+    HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+    
+        List<Motorista> motoristas = new MotoristaController().recuperarTodos();
      
      for(Motorista m : motoristas){
          if(m.getLogin().equals(login)){
              if(m.getSenha().equals(senha)){
-                 this.setMotoristaLogado(m);
-                 return "motoristaTemplate";
+                   this.motoristaLogado = m;
+                   session.setAttribute("motoristaLogado", this.motoristaLogado);
+                 return "cadViagem.xhtml";
              }
          }
      }
      
      return "";
     }
+
+    public Motorista getMotoristaLogado() {
+        return motoristaLogado;
+    }
+
+    public void setMotoristaLogado(Motorista motoristaLogado) {
+        this.motoristaLogado = motoristaLogado;
+    }
+    
+    
 }

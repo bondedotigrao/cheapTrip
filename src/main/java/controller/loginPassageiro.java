@@ -4,6 +4,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import model.entidades.Passageiro;
 
 /**
@@ -13,7 +14,10 @@ import model.entidades.Passageiro;
 @ManagedBean
 @SessionScoped
 public class loginPassageiro {
-
+    private Passageiro passageiroLogado = null;
+    FacesContext fc = FacesContext.getCurrentInstance();
+    HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+    
     public loginPassageiro() {
     }
 
@@ -32,6 +36,8 @@ public class loginPassageiro {
         for(Passageiro p : passageiros){
             if(p.getLogin().equals(p.getLogin())){
                 if(p.getSenha().equals(senha)){
+                    this.passageiroLogado = p;
+                     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("passageiroLogado", p);
                     return "index.xthml";
                 }
             }
