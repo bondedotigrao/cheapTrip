@@ -9,9 +9,9 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable id="tableViagemPassageiro" rows="5" var="viagemPassageiro" value="#{viagemController.recuperarPorDestino()}"
+            <p:dataTable id="tableViagemPassageiro" rows="5" var="viagemPassageiro" value="#{viagemController.recuperarTodas()}"
                          rowKey="#{viagemPassageiro.id_viagem}" selection="#{viagemController.selectedViagem}" selectionMode="single"
-                         paginator="true">
+                         paginator="true" filterBy="#{viagemPassageiro.local}">
             
                  <p:column headerText="Motorista">
                     #{viagem.motorista.nome}

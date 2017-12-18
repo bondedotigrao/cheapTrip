@@ -40,6 +40,8 @@ public class ViagemController {
     }
 
     public void alterar() {
+        Passageiro passageiro = (Passageiro)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
+        this.selectedViagem.getPassageiros().add(passageiro);
         this.viagemHibernate.alterar(this.selectedViagem);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("A viagem alterada"));
     }

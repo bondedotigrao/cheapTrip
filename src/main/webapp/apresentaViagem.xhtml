@@ -19,12 +19,14 @@
 
                 <p:column headerText="Passageiros">
                     <ui:repeat var="pass" value="#{viagem.passageiros}">
-                        #{pass.nome}
+                        #{pass.nome}<br/>
                     </ui:repeat>
                 </p:column>
-                
+
                 <p:column headerText="Operações">
                     <p:commandButton value="Visualizar" oncomplete="PF('widDialVisualizaViagem').show()"/>
+                    <p:commandButton value="Cadastre-se" oncomplete="PF('widDialAdicionaPassageiro').show()"/>
+
                 </p:column>
             </p:dataTable>
         </h:form>
@@ -42,15 +44,16 @@
 
                         <h:outputText value="E-mail"/>
                         <h:outputText value="#{viagemController.selectedViagem.motorista.email}"/>
-    
+
                     </p:panelGrid>
                     <p:commandButton value="Visualizar endereço" oncomplete="PF('widDialVisualizaEndereco').show()"/>
+                    <p:commandButton value="Visualizar passageiros" oncomplete="PF('widDialVisualizaPassageiro').show()"/>
                 </p:tab>
             </p:fieldset>
 
         </p:dialog>
-        
-               <p:dialog visible="false" id="dialVisualizaEndereco" modal="true"
+
+        <p:dialog visible="false" id="dialVisualizaEndereco" modal="true"
                   resizable="false" widgetVar="widDialVisualizaEndereco">
             <p:fieldset>
                 <p:tab>
@@ -64,12 +67,50 @@
                         <h:outputText value="CEP"/>
                         <h:outputText value="#{viagemController.selectedViagem.motorista.local.cep}"/>
 
-                        
+
                     </p:panelGrid>
                 </p:tab>
             </p:fieldset>
 
         </p:dialog>
+        
+            <p:dialog visible="false" id="dialAdicionarPassageiro" modal="true"
+                      resizable="false" widgetVar="widDialAdicionaPassageiro">
+                <p:tab>
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Nome *"/>
+                        <p:inputText value="#{loginPassageiro.passageiroLogado.nome}" required="true"/>
+
+                        <h:outputText value="CPF *"/>
+                        <p:inputText value="#{loginPassageiro.passageiroLogado.cpf}" required="true"/>
+
+                        <h:outputText value="E-mail *"/>
+                        <p:inputText value="#{loginPassageiro.passageiroLogado.email}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar-se a viagem" action="#{viagemController.alterar()}"
+                                     oncomplete="PF('widDialAdicionaPassageiro').hide()"/>
+
+                </p:tab>
+            </p:dialog>
+        
+            <p:dialog visible="false" id="dialVisualizaPassageiro" modal="true"
+                      resizable="false" widgetVar="widDialVisualizaPassageiro">
+                <p:dataTable id="tablePass" rows="5" var="pass" value="#{viagemController.selectedViagem.passageiros}"
+                             rowKey="#{pass.id_passageiro}" paginator="true">
+                    <p:column headerText="Nome">
+                        #{pass.nome}
+                    </p:column>
+                    <p:column headerText="CPF">
+                        #{pass.cpf}
+                    </p:column>
+                    <p:column headerText="E-mail">
+                        #{pass.email}
+                    </p:column>
+                    
+                </p:dataTable>
+                 <p:commandButton value="Hide" oncomplete="PF('widDialVisualizaPassageiro').hide()"/>
+            </p:dialog>
     </h:body>
 </html>
 

@@ -21,8 +21,6 @@ public class Carro implements Serializable {
     private String marca;
     @Column(length = 12,nullable = true)
     private String modelo;
-    @Column(length = 3,nullable = false,updatable = true)
-    private int vagas;
     @Column(length = 7,nullable = false,unique = true)
     private String placa;
     
@@ -30,10 +28,9 @@ public class Carro implements Serializable {
     public Carro() {
     }
 
-    public Carro(String marca, String modelo, int vagas, String placa) {
+    public Carro(String marca, String modelo, String placa) {
         this.marca = marca;
         this.modelo = modelo;
-        this.vagas = vagas;
         this.placa = placa;
     }
 
@@ -61,14 +58,6 @@ public class Carro implements Serializable {
         this.modelo = modelo;
     }
 
-    public int getVagas() {
-        return vagas;
-    }
-
-    public void setVagas(int vagas) {
-        this.vagas = vagas;
-    }
-
     public String getPlaca() {
         return placa;
     }
@@ -79,12 +68,11 @@ public class Carro implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + this.id_carro;
-        hash = 53 * hash + Objects.hashCode(this.marca);
-        hash = 53 * hash + Objects.hashCode(this.modelo);
-        hash = 53 * hash + this.vagas;
-        hash = 53 * hash + Objects.hashCode(this.placa);
+        int hash = 7;
+        hash = 97 * hash + this.id_carro;
+        hash = 97 * hash + Objects.hashCode(this.marca);
+        hash = 97 * hash + Objects.hashCode(this.modelo);
+        hash = 97 * hash + Objects.hashCode(this.placa);
         return hash;
     }
 
@@ -103,9 +91,6 @@ public class Carro implements Serializable {
         if (this.id_carro != other.id_carro) {
             return false;
         }
-        if (this.vagas != other.vagas) {
-            return false;
-        }
         if (!Objects.equals(this.marca, other.marca)) {
             return false;
         }
@@ -120,7 +105,7 @@ public class Carro implements Serializable {
 
     @Override
     public String toString() {
-        return "Carro{" + "id_carro=" + id_carro + ", marca=" + marca + ", modelo=" + modelo + ", vagas=" + vagas + ", placa=" + placa + '}';
+        return "Carro{" + "id_carro=" + id_carro + ", marca=" + marca + ", modelo=" + modelo + ", placa=" + placa + '}';
     }
 
     
