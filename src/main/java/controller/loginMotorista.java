@@ -21,8 +21,6 @@ public class loginMotorista {
 
     
     public String realizarLogin(String login,String senha){
-     FacesContext fc = FacesContext.getCurrentInstance();
-    HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
     
         List<Motorista> motoristas = new MotoristaController().recuperarTodos();
      
@@ -30,7 +28,7 @@ public class loginMotorista {
          if(m.getLogin().equals(login)){
              if(m.getSenha().equals(senha)){
                    this.motoristaLogado = m;
-                   session.setAttribute("motoristaLogado", this.motoristaLogado);
+                  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("motoristaLogado", m);
                  return "cadViagem.xhtml";
              }
          }

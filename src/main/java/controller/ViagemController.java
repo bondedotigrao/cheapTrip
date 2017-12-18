@@ -31,13 +31,9 @@ public class ViagemController {
     }
 
     public void cadastrar(Local local) {
-        ServletRequest req = null;
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpSession session = (HttpSession) request.getSession();
-        Motorista m = (Motorista) session.getAttribute("motoristaLogado");
-        
+        Motorista motorista = (Motorista)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("motoristaLogado");
         this.cadViagem.setLocal(local);
-        this.cadViagem.setMotorista(m);
+        this.cadViagem.setMotorista(motorista);
 
         this.viagemHibernate.cadastrar(this.cadViagem);
 
