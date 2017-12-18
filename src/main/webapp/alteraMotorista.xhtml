@@ -19,22 +19,22 @@
             <p:fieldset>
                 <p:panelGrid columns="2">
                     <h:outputText value="Nome: "/>
-                    <p:inputText value="#{motoristaController.selectedMotorista.nome}" required="true"/>
+                    <p:inputText value="#{loginMotorista.motoristaLogado.nome}" required="true"/>
                     
                     <h:outputText value="CPF: "/>
-                    <p:inputText value="#{motoristaController.selectedMotorista.cpf}" required="true"/>
+                    <p:inputText value="#{loginMotorista.motoristaLogado.cpf}" required="true"/>
                     
                     <h:outputText value="E-mail: "/>
-                    <p:inputText value="#{motoristaController.selectedMotorista.email}"/>
+                    <p:inputText value="#{loginMotorista.motoristaLogado.email}"/>
                     
                     <h:outputText value="Login: "/>
-                    <p:inputText value="#{motoristaController.selectedMotorista.login}" required="true"/>
+                    <p:inputText value="#{loginMotorista.motoristaLogado.login}" required="true"/>
                     
                     <h:outputText value="Senha: "/>
-                    <p:inputText value="#{motoristaController.selectedMotorista.senha}" required="true"/>
+                    <p:inputText value="#{loginMotorista.motoristaLogado.senha}" required="true"/>
                 </p:panelGrid>
-                <p:commandButton value="Alterar" action="#{motoristaController.alterar(motoristaController.selectedMotorista.local
-                                                           ,motoristaController.selectedMotorista.carro)}"/>
+                <p:commandButton value="Alterar" action="#{motoristaController.alterar(loginMotorista.motoristaLogado.local
+                                                           ,loginMotorista.motoristaLogado.carro)}"/>
                 
                 <p:commandButton value="Alterar carro" action="alteraCarro.xhtml"/>
                 

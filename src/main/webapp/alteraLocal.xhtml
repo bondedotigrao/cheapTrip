@@ -19,16 +19,16 @@
             <p:fieldset>
                 <p:panelGrid columns="2">
                     <h:outputText value="Estado "/>
-                    <h:inputText value="#{motoristaController.selectedMotorista.local.estado}"/>
+                    <h:inputText value="#{loginMotorista.motoristaLogado.local.estado}"/>
                     
                     <h:outputText value="Cidade "/>
-                    <p:inputText value="#{motoristaController.selectedMotorista.local.cidade}"/>
+                    <p:inputText value="#{loginMotorista.motoristaLogado.local.cidade}"/>
                     
                     <h:outputText value="CEP" />
-                    <p:inputText value="#{motoristaController.selectedMotorista.local.cep}"/>
+                    <p:inputText value="#{loginMotorista.motoristaLogado.local.cep}"/>
                     
                 </p:panelGrid>
-                <p:commandButton value="Alterar" action="#{localController.alterar(motoristaController.selectedMotorista.local)}"/>
+                <p:commandButton value="Alterar" action="#{localController.alterarLocalMotorista(loginMotorista.motoristaLogado.local)}"/>
                 <p:commandButton value="Voltar" action="visualizaMotorista.xhtml"/>
                 
             </p:fieldset>

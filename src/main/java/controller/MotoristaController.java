@@ -21,7 +21,6 @@ public class MotoristaController {
 
     private final MotoristaDAO motoristaHibernate;
     private Motorista cadMotorista;
-    private Motorista selectedMotorista = (Motorista) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("motoristaLogado");
 
     public MotoristaController() {
         this.motoristaHibernate = new MotoristaDAO();
@@ -41,34 +40,25 @@ public class MotoristaController {
         return "loginMotorista.xhtml";
     }
 
-    public String alterar(Local local,Carro carro) {
-        this.selectedMotorista.setLocal(local);
-        this.selectedMotorista.setCarro(carro);
-        this.motoristaHibernate.alterar(this.selectedMotorista);
+    public String alterar(Motorista motorista) {
+        this.motoristaHibernate.alterar(motorista);
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista alterado com sucesso!"));
 
-        return "index.xhtml";
+        return "menuMotorista.xhtml";
     }
 
-    public String deletar() {
-        this.motoristaHibernate.deletar(this.selectedMotorista);
+    public String deletar(Motorista motorista) {
+        this.motoristaHibernate.deletar(motorista);
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista deletado com sucesso!"));
 
         return "index.xhtml";
     }
 
-    public Motorista recuperar() {
-        return this.motoristaHibernate.recuperar(this.selectedMotorista.getId_motorista());
-    }
 
     public List<Motorista> recuperarTodos() {
         return this.motoristaHibernate.recuperarTodos();
-    }
-
-    public Motorista recuperarPorCpf() {
-        return this.motoristaHibernate.recuperarPorCpf(this.selectedMotorista.getCpf());
     }
 
     public boolean login(String login,String senha) {
@@ -83,12 +73,4 @@ public class MotoristaController {
         this.cadMotorista = cadMotorista;
     }
 
-    public Motorista getSelectedMotorista() {
-        return selectedMotorista;
-    }
-
-    public void setSelectedMotorista(Motorista selectedMotorista) {
-        this.selectedMotorista = selectedMotorista;
-    }
-    
 }

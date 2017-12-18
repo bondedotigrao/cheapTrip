@@ -37,16 +37,16 @@
                   widgetVar="widDialVisualizaPassageiro" >
             <p:panelGrid columns="2">
                 <h:outputText value="Código : "/>
-                <h:outputText value="#{passageiroController.selectedPassageiro.id_passageiro}"/>
+                <h:outputText value="#{loginPassageiro.passageiroLogado.id_passageiro}"/>
                 
                 <h:outputText value="Nome : "/>
-                <h:outputText value="#{passageiroController.selectedPassageiro.nome}"/>
+                <h:outputText value="#{loginPassageiro.passageiroLogado.nome}"/>
                 
                 <h:outputText value="CPF : "/>
-                <h:outputText value="#{passageiroController.selectedPassageiro.cpf}"/>
+                <h:outputText value="#{loginPassageiro.passageiroLogado.cpf}"/>
                 
                 <h:outputText value="Email : "/>
-                <h:outputText value="#{passageiroController.selectedPassageiro.email}"/>
+                <h:outputText value="#{loginPassageiro.passageiroLogado.email}"/>
                 
                 <p:commandButton value="Visualizar Endereço" oncomplete="PF('widDialVisualizaEnderecoPassageiro').show()" 
                                  update="dialEndereco"/>
@@ -60,13 +60,13 @@
                       widgetVar="widDialVisualizaEnderecoPassageiro">
                 <p:panelGrid columns="2">
                     <h:outputText value="Estado : "/>
-                    <h:outputText value="#{passageiroController.selectedPassageiro.local.estado}"/>
+                    <h:outputText value="#{loginPassageiro.passageiroLogado.local.estado}"/>
                     
                     <h:outputText value="Cidade : "/>
-                    <h:outputText value="#{passageiroController.selectedPassageiro.local.cidade}"/>
+                    <h:outputText value="#{loginPassageiro.passageiroLogado.local.cidade}"/>
                     
                     <h:outputText value="CEP : "/>
-                    <h:outputText value="#{passageiroController.selectedPassageiro.local.cep}"/>
+                    <h:outputText value="#{loginPassageiro.passageiroLogado.local.cep}"/>
                     
                     <p:commandButton value="Voltar para o passageiro" oncomplete="PF('widDialVisualizaEnderecoPassageiro').hide()"/>
                 </p:panelGrid>
@@ -75,7 +75,7 @@
                  <p:dialog id="delPassageiro" visible="false" modal="true" resizable="false"
                      widgetVar="widDialDeletaPassageiro">
                      <h:outputText value="Você deseja realmente deletar esser perfil?"/>
-                                   <p:commandButton value="Sim" action="#{passageiroController.deletar()}" oncomplete="PF('widDialDeletaPassageiro').hide()"/>
+                                   <p:commandButton value="Sim" action="#{passageiroController.deletar(loginPassageiro.passageiroLogado)}" oncomplete="PF('widDialDeletaPassageiro').hide()"/>
                                    <p:commandButton value="Não" oncomplete="PF('widDialDeletaPassageiro').hide()"/>
                  </p:dialog>
         </h:form>

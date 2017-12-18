@@ -20,16 +20,16 @@
             <p:fieldset>
                 <p:panelGrid columns="2">
                     <h:outputText value="Estado :"/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.local.estado}" required="true"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.local.estado}" required="true"/>
 
                     <h:outputText value="Cidade :"/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.local.cidade}" required="true"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.local.cidade}" required="true"/>
 
                     <h:outputText value="CEP :"/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.local.cep}"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.local.cep}"/>
                 </p:panelGrid>
 
-                <p:commandButton value="Alterar" action="#{localController.alterar(passageiroController.selectedPassageiro.local)}"/>
+                <p:commandButton value="Alterar" action="#{localController.alterarLocalPassageiro(loginPassageiro.passageiroLogado.local)}"/>
             </p:fieldset>
         </h:form>
     </h:body> 

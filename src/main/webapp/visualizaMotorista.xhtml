@@ -42,16 +42,16 @@
                       widgetVar="widDialVisualizaMotorista" >
                 <p:panelGrid columns="2">
                     <h:outputText value="Código : "/>
-                    <h:outputText value="#{motoristaController.selectedMotorista.id_motorista}"/>
+                    <h:outputText value="#{loginMotorista.motoristaLogado.id_motorista}"/>
 
                     <h:outputText value="Nome : "/>
-                    <h:outputText value="#{motoristaController.selectedMotorista.nome}"/>
+                    <h:outputText value="#{loginMotorista.motoristaLogado.nome}"/>
 
                     <h:outputText value="CPF : "/>
-                    <h:outputText value="#{motoristaController.selectedMotorista.cpf}"/>
+                    <h:outputText value="#{loginMotorista.motoristaLogado.cpf}"/>
 
                     <h:outputText value="Email : "/>
-                    <h:outputText value="#{motoristaController.selectedMotorista.email}"/>
+                    <h:outputText value="#{loginMotorista.motoristaLogado.email}"/>
 
                     <p:commandButton value="Visualizar Endereço" oncomplete="PF('widDialVisualizaEnderecoMotorista').show()" 
                                      update="dialEndereco"/>
@@ -65,13 +65,13 @@
                       widgetVar="widDialVisualizaEnderecoMotorista">
                 <p:panelGrid columns="2">
                     <h:outputText value="Estado : "/>
-                    <h:outputText value="#{motoristaController.selectedMotorista.local.estado}"/>
+                    <h:outputText value="#{loginMotorista.motoristaLogado.local.estado}"/>
 
                     <h:outputText value="Cidade : "/>
-                    <h:outputText value="#{motoristaController.selectedMotorista.local.cidade}"/>
+                    <h:outputText value="#{loginMotorista.motoristaLogado.local.cidade}"/>
 
                     <h:outputText value="CEP : "/>
-                    <h:outputText value="#{motoristaController.selectedMotorista.local.cep}"/>
+                    <h:outputText value="#{loginMotorista.motoristaLogado.local.cep}"/>
 
                     <p:commandButton value="Voltar para o motorista" oncomplete="PF('widDialVisualizaEnderecoMotorista').hide()"/>
                 </p:panelGrid>
@@ -80,7 +80,7 @@
             <p:dialog id="delMotorista" visible="false" modal="true" resizable="false"
                       widgetVar="widDialDeletaMotorista">
                 <h:outputText value="Você deseja realmente deletar esser perfil?"/>
-                <p:commandButton value="Sim" action="#{motoristaController.deletar()}" oncomplete="PF('widDialDeletaMotorista').hide()"/>
+                <p:commandButton value="Sim" action="#{motoristaController.deletar(loginMotorista.motoristaLogado)}" oncomplete="PF('widDialDeletaMotorista').hide()"/>
                 <p:commandButton value="Não" oncomplete="PF('widDialDeletaMotorista').hide()"/>
             </p:dialog>
         </h:form>

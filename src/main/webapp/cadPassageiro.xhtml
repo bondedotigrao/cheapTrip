@@ -10,10 +10,7 @@
     </h:head>
     <h:body>
             <ui:include src="index.xhtml"/>
-         
-         <c:if test="${loginPassageiro.passageiroLogado == null}">
-            <script>location.href = "loginPassageiro.xhtml";</script>
-            </c:if>
+ 
             
          <p:growl id="gro" showDetail="true" autoUpdate="true" sticky="true" showSummary="true"/>
         <h:form>

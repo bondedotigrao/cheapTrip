@@ -20,21 +20,21 @@
             <p:fieldset>
                 <p:panelGrid columns="2">
                     <h:outputText value="Nome: "/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.nome}" required="true"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.nome}" required="true"/>
                     
                     <h:outputText value="CPF: "/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.cpf}" required="true"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.cpf}" required="true"/>
                     
                     <h:outputText value="E-mail: "/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.email}"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.email}"/>
                     
                     <h:outputText value="Login: "/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.login}" required="true"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.login}" required="true"/>
                     
                     <h:outputText value="Senha: "/>
-                    <p:inputText value="#{passageiroController.selectedPassageiro.senha}" required="true"/>
+                    <p:inputText value="#{loginPassageiro.passageiroLogado.senha}" required="true"/>
                 </p:panelGrid>
-                <p:commandButton value="Alterar" action="#{passageiroController.alterar(passageiroController.selectedPassageiro.local)}"/>
+                <p:commandButton value="Alterar" action="#{passageiroController.alterar(loginPassageiro.passageiroLogado)}"/>
                 
                 <p:commandButton value="Alterar endereço" action="alteraLocalPassageiro.xhtml"/>
                 

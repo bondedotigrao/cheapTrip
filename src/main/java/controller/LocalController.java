@@ -18,7 +18,6 @@ import model.negocio.LocalDAO;
 public class LocalController{
 
     private final LocalDAO localHibernate;
-    private Local selectedLocal;
     private Local cadLocal;
 
     public LocalController() {
@@ -38,16 +37,22 @@ public class LocalController{
         this.cadLocal = cadLocal;
     }
 
-    public String alterar(Local local) {
-        this.selectedLocal = local;
-        this.localHibernate.alterar(this.selectedLocal);
+    public String alterarLocalMotorista(Local local) {
+        this.localHibernate.alterar(local);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Local alterado com sucesso!"));
         
-        return "index.xhtml";
+        return "visualizaMotorista.xhtml";
+    }
+    
+       public String alterarLocalPassageiro(Local local) {
+        this.localHibernate.alterar(local);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Local alterado com sucesso!"));
+        
+        return "visualizaPassageiro.xhtml";
     }
 
-    public void deletar() {
-        this.localHibernate.deletar(this.selectedLocal);
+    public void deletar(Local local) {
+        this.localHibernate.deletar(local);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Um local foi deletado."));
     }
 
@@ -55,12 +60,5 @@ public class LocalController{
         return this.localHibernate.recuperarTodos();
     }
 
-    public Local getSelectedLocal() {
-        return selectedLocal;
-    }
-
-    public void setSelectedLocal(Local selectedLocal) {
-        this.selectedLocal = selectedLocal;
-    }
 
 }

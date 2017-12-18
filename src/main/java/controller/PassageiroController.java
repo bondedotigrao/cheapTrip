@@ -18,7 +18,7 @@ import model.negocio.PassageiroDAO;
 public class PassageiroController {
     private final PassageiroDAO passageiroHibernate;
     private Passageiro cadPassageiro;
-    private Passageiro selectedPassageiro = (Passageiro) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
+    private Passageiro selectedPassageiro = (Passageiro)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
 
     public PassageiroController() {
         this.passageiroHibernate = new PassageiroDAO();
@@ -30,24 +30,24 @@ public class PassageiroController {
         this.passageiroHibernate.cadastrar(this.cadPassageiro);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro realizado com sucesso!"));
-        
+        this.cadPassageiro = new Passageiro();
         return "loginPassageiro.xhtml";
     }
     
-    public String alterar(Local local){
-        this.selectedPassageiro.setLocal(local);
-        this.passageiroHibernate.alterar(this.selectedPassageiro);
+    public String alterar(Passageiro passageiro){
+        this.passageiroHibernate.alterar(passageiro);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Passageiro " + this.selectedPassageiro.getNome() + " alterado com sucesso"));
         
-        return "index.xhtml";
+        return "visualizaPassageiro.xhtml";
     }
     
-    public void deletar(){
-        this.passageiroHibernate.deletar(this.selectedPassageiro);
+    public String deletar(Passageiro passageiro){
+        this.passageiroHibernate.deletar(passageiro);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O passageiro " + this.selectedPassageiro.getNome() + " foi deletado"));
 
+        return "index.xhtml";
     }
     
     public List<Passageiro> recuperarTodos(){

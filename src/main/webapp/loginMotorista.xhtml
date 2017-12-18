@@ -10,9 +10,6 @@
     </h:head>
     <h:body>
           <ui:include src="index.xhtml"/>
-         <c:if test="${loginMotorista.motoristaLogado == null}">
-            <script>location.href = "loginMotorista.xhtml";</script>
-        </c:if>
          
         <p:growl id="gro" sticky="true" showDetail="true" showSummary="true"/>
         <p:dialog visible="true">
