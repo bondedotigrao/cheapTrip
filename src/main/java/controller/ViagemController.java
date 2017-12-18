@@ -3,13 +3,11 @@ package controller;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import model.entidades.Local;
 import model.entidades.Motorista;
+import model.entidades.Passageiro;
 import model.entidades.Viagem;
 import model.negocio.ViagemDAO;
 
@@ -18,7 +16,7 @@ import model.negocio.ViagemDAO;
  * @author Jarvis
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ViagemController {
 
     private final ViagemDAO viagemHibernate;
@@ -70,5 +68,9 @@ public class ViagemController {
     public void setSelectedViagem(Viagem selectedViagem) {
         this.selectedViagem = selectedViagem;
     }
-
+    
+    public List<Viagem> recuperarPorDestino(){
+        Passageiro p = (Passageiro) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
+        return this.viagemHibernate.recuperarPorDestino(p.getLocal());
+    }
 }

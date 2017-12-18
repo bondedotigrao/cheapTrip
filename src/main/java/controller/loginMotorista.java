@@ -4,7 +4,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import model.entidades.Motorista;
 
 /**
@@ -45,5 +44,10 @@ public class loginMotorista {
         this.motoristaLogado = motoristaLogado;
     }
     
+    public String logout(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        
+        return "index.xhtml";
+    }
     
 }

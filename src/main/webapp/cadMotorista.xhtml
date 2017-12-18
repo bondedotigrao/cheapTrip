@@ -9,7 +9,7 @@
     <h:body>
         <h:form>
             <p:dialog id="dialCarro" visible="true" resizable="false" modal="false"
-                      widgetVar="widDialCarro">
+                      widgetVar="widDialCarro" header="Cadastro do carro">
                 <p:tab>
                     <p:panelGrid columns="2">
                         <h:outputText value="Marca *"/>
@@ -28,7 +28,7 @@
         </h:form>
         <h:form>
                <p:dialog id="dialLocal" visible="false" resizable="false" modal="false"
-                      widgetVar="widDialLocal">
+                         widgetVar="widDialLocal" header="Cadastro do endereço">
                 <p:tab>
                     <p:panelGrid columns="2">
                         <h:outputText value="Estado *" />
@@ -47,7 +47,8 @@
         </h:form>
          
         <h:form>
-            <p:dialog id="dialMotorista" visible="false" resizable="false" modal="true" widgetVar="widDialMotorista">
+            <p:dialog id="dialMotorista" visible="false" resizable="false" modal="true" widgetVar="widDialMotorista"
+                      header="Cadastro do motorista">
                 <p:tab>
                     <p:panelGrid columns="2">
                         <h:outputText value="Nome *"/>

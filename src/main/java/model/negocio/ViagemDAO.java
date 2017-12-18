@@ -1,6 +1,8 @@
 package model.negocio;
 
+import java.util.ArrayList;
 import java.util.List;
+import model.entidades.Local;
 import model.entidades.Viagem;
 import model.implementacoes.ViagemHibernateDAO;
 import model.interfaces.DAO;
@@ -44,5 +46,21 @@ public class ViagemDAO {
     
     public List<Viagem> recuperarTodos(){
         return ((ViagemHibernateDAO)dao).recuperarTodos();
+    }
+    
+    public List<Viagem> recuperarPorDestino(Local local){
+        List<Viagem> viagens =  this.recuperarTodos();
+        List<Viagem> retorno = new ArrayList<>();
+        
+        for(Viagem v : viagens){
+           
+            if(local.getEstado().equals(v.getLocal().getEstado()) 
+                    && local.getCidade().equals(v.getLocal().getCidade())){
+                
+                  
+                retorno.add(v);
+            }
+        }
+         return retorno;
     }
 }

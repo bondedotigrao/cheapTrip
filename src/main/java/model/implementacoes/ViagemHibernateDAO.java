@@ -1,6 +1,7 @@
 package model.implementacoes;
 
 import java.util.List;
+import model.entidades.Local;
 import model.entidades.Viagem;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -105,4 +106,5 @@ public class ViagemHibernateDAO implements ViagemInterfaceDAO {
             return viagem;
         }
     }
+
 }

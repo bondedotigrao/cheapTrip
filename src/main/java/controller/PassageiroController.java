@@ -31,7 +31,7 @@ public class PassageiroController {
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro realizado com sucesso!"));
         
-        return "index.xhtml";
+        return "loginPassageiro.xhtml";
     }
     
     public String alterar(Local local){

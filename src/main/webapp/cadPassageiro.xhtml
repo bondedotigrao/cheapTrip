@@ -25,15 +25,15 @@
                                      oncomplete="PF('widDialPassageiro').show()" onclick="PF('widDialLocal').hide()"/>
                 </p:tab> 
             </p:dialog>
-            </h:form>
+        </h:form>
 
-                
+
         <h:form>
-            <p:dialog visible="false" id="dialPassageiro" resizable="false" modal="false"
-                      widgetVar="widDialPassageiro"/>
-            <p:tab>
-                <p:panelGrid columns="2">
-                    <h:outputText value="Nome *"/>
+            <p:dialog  id="dialPassageiro" resizable="false" modal="false"
+                       widgetVar="widDialPassageiro" visible="false">
+                <p:tab>
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Nome *"/>
                         <p:inputText value="#{passageiroController.cadPassageiro.nome}" required="true"/>
 
                         <h:outputText value="CPF *"/>
@@ -44,17 +44,17 @@
 
                         <h:outputText value="Login *"/>
                         <p:inputText value="#{passageiroController.cadPassageiro.login}" required="true"/>
-                        
-                         <h:outputText value="Senha *"/>
-                         <p:password value="#{passageiroController.cadPassageiro.senha}" required="true"/>
-                         
-                         
-                        
-                </p:panelGrid>
-                <p:commandButton value="Cadastrar" action="#{passageiroController.cadastrar(localController.cadLocal)}"/>
-                
-            </p:tab>
-              
+
+                        <h:outputText value="Senha *"/>
+                        <p:password value="#{passageiroController.cadPassageiro.senha}" required="true"/>
+
+
+
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{passageiroController.cadastrar(localController.cadLocal)}"/>
+
+                </p:tab>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>

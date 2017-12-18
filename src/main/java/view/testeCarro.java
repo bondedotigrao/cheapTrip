@@ -1,11 +1,12 @@
 package view;
 
-import controller.CarroController;
-import model.entidades.Carro;
-import model.entidades.Local;
-import model.implementacoes.CarroHibernateDAO;
-import model.implementacoes.LocalHibernateDAO;
-import model.negocio.CarroDAO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.context.FacesContext;
+import model.entidades.Passageiro;
+import model.entidades.Viagem;
+import model.implementacoes.ViagemHibernateDAO;
+import model.negocio.ViagemDAO;
 
 /**
  *
@@ -13,11 +14,11 @@ import model.negocio.CarroDAO;
  */
 public class testeCarro {
     public static void main(String args[]){
-        Local local = LocalHibernateDAO.getInstance().recuperar(4);
-        
-        local.setCidade("X");
-        
-        LocalHibernateDAO.getInstance().alterar(local);
+        Passageiro p = (Passageiro) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
+       List<Viagem> viagens = new ViagemDAO().recuperarPorDestino(p.getLocal());
+       for(Viagem v1 : viagens){
+               System.out.println("s");
+           }
     }
 
 }

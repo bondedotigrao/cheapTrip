@@ -36,11 +36,18 @@ public class loginPassageiro {
                 if(p.getSenha().equals(senha)){
                     this.passageiroLogado = p;
                      FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("passageiroLogado", p);
-                    return "visualizaPassageiro.xthml";
+                    return "cadViagemPassageiro.xhtml";
                 }
             }
         }
         
         return "";
     }
+    
+      public String logout(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        
+        return "index.xhtml";
+    }
+    
 }

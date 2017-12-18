@@ -38,7 +38,7 @@ public class MotoristaController {
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista cadastrado com sucesso!"));
 
-        return "index.xhtml";
+        return "loginMotorista.xhtml";
     }
 
     public String alterar(Local local,Carro carro) {
