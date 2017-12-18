@@ -21,7 +21,7 @@ public class MotoristaController {
 
     private final MotoristaDAO motoristaHibernate;
     private Motorista cadMotorista;
-    private Motorista selectedMotorista;
+    private Motorista selectedMotorista = (Motorista) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("motoristaLogado");
 
     public MotoristaController() {
         this.motoristaHibernate = new MotoristaDAO();

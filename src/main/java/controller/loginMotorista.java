@@ -29,7 +29,7 @@ public class loginMotorista {
              if(m.getSenha().equals(senha)){
                    this.motoristaLogado = m;
                   FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("motoristaLogado", m);
-                 return "cadViagem.xhtml";
+                 return "visualizaMotorista.xhtml";
              }
          }
      }

@@ -11,12 +11,10 @@ import model.entidades.Passageiro;
  *
  * @author Jarvis
  */
-@ManagedBean
+@ManagedBean(name = "loginPassageiro")
 @SessionScoped
 public class loginPassageiro {
     private Passageiro passageiroLogado = null;
-    FacesContext fc = FacesContext.getCurrentInstance();
-    HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
     
     public loginPassageiro() {
     }
@@ -38,7 +36,7 @@ public class loginPassageiro {
                 if(p.getSenha().equals(senha)){
                     this.passageiroLogado = p;
                      FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("passageiroLogado", p);
-                    return "index.xthml";
+                    return "visualizaPassageiro.xthml";
                 }
             }
         }

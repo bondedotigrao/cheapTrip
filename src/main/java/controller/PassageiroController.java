@@ -18,7 +18,7 @@ import model.negocio.PassageiroDAO;
 public class PassageiroController {
     private final PassageiroDAO passageiroHibernate;
     private Passageiro cadPassageiro;
-    private Passageiro selectedPassageiro;
+    private Passageiro selectedPassageiro = (Passageiro) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
 
     public PassageiroController() {
         this.passageiroHibernate = new PassageiroDAO();
