@@ -1,7 +1,8 @@
 package model.implementacoes;
 
 import java.util.List;
-import model.entidades.Local;
+import model.entidades.Motorista;
+import model.entidades.Passageiro;
 import model.entidades.Viagem;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -106,5 +107,19 @@ public class ViagemHibernateDAO implements ViagemInterfaceDAO {
             return viagem;
         }
     }
+        @Override
+       public List<Viagem> recuperarPorMotorista(Motorista motorista) {
+        Session session = this.sessions.openSession();
+        List<Viagem> viagem = null;
 
+        try {
+            viagem = (List) session.createQuery("From Viagem Where Cod_motorista=" + motorista.getId_motorista() ).getResultList();
+        } catch (Exception recTodosLocaisMotoristaError) {
+            System.out.println(recTodosLocaisMotoristaError.getCause()
+                    + "\nOcorreu um erro ao recuperar todas viagens do motorista.");
+        } finally {
+            session.close();
+            return viagem;
+        }
+    }
 }

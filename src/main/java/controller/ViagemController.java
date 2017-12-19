@@ -54,7 +54,11 @@ public class ViagemController {
     public List<Viagem> recuperarTodas() {
         return this.viagemHibernate.recuperarTodos();
     }
-
+    
+    public List<Viagem> recuperarPorMotorista(Motorista motorista){
+        return this.viagemHibernate.recuperarPorMotorista(motorista);
+    }
+    
     public Viagem getCadViagem() {
         return cadViagem;
     }
@@ -70,9 +74,5 @@ public class ViagemController {
     public void setSelectedViagem(Viagem selectedViagem) {
         this.selectedViagem = selectedViagem;
     }
-    
-    public List<Viagem> recuperarPorDestino(){
-        Passageiro p = (Passageiro) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
-        return this.viagemHibernate.recuperarPorDestino(p.getLocal());
-    }
+
 }

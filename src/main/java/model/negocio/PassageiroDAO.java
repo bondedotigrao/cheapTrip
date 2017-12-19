@@ -47,13 +47,6 @@ public class PassageiroDAO {
         return ((PassageiroHibernateDAO)dao).recuperarTodos();
     }
     
-    public Passageiro recuperarPorCpf(String cpf){
-        if(((PassageiroHibernateDAO)dao).recuperarPorCpf(cpf) == null){
-            return null;
-        }
-        return ((PassageiroHibernateDAO)dao).recuperarPorCpf(cpf);
-    }
-    
     public boolean login(String login,String senha){
         if(login == null || senha == null){
             return false;

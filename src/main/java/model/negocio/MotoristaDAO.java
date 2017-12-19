@@ -42,14 +42,7 @@ public class MotoristaDAO {
         }
     }
       
-      public Motorista recuperarPorCpf(String cpf){
-          if(((MotoristaHibernateDAO)dao).recuperarPorCpf(cpf) == null){
-              return null;
-          }
-          
-          return ((MotoristaHibernateDAO)dao).recuperarPorCpf(cpf);
-      }
-      
+
       public List<Motorista> recuperarTodos(){
           return ((MotoristaHibernateDAO)dao).recuperarTodos();
       }

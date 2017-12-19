@@ -11,20 +11,27 @@
     <h:body>
           <ui:include src="menuMotorista.xhtml"/>
          
-        <p:growl id="gro" sticky="true" showDetail="true" showSummary="true"/>
+          <p:growl id="gro" life="4000" showDetail="true" 
+                     showSummary="true"/>
         <h:form>
             <p:dialog id="dialCarro" visible="true" resizable="false" modal="false"
                       widgetVar="widDialCarro" header="Cadastro do carro">
                 <p:tab>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="3" columnClasses="label, values">
                         <h:outputText value="Marca *"/>
-                        <p:inputText value="#{carroController.cadCarro.marca}" />
-
+                        <p:inputText  id="txtMarca" value="#{carroController.cadCarro.marca}" required="true"
+                                     requiredMessage="Informe a marca do veiculo" />
+                        <p:messages for="txtMarca"/>
+                        
                         <h:outputText value="Modelo *"/>
-                        <p:inputText value="#{carroController.cadCarro.modelo}"/>
-
+                        <p:inputText id="txtModelo" value="#{carroController.cadCarro.modelo}"
+                                     requiredMessage="Informe o modelo do veículo"/>
+                        <p:message for="txtModelo"/>
+                        
                         <h:outputText value="Placa *"/>
-                        <p:inputText value="#{carroController.cadCarro.placa}" required="true"/>
+                        <p:inputText id="txtPlaca" value="#{carroController.cadCarro.placa}" required="true"
+                                     requiredMessage="Informe a placa do veículo"/>
+                        <p:messages for="txtPlaca"/>
                     </p:panelGrid>
                     <p:commandButton value="Next" action="#{carroController.cadastrar()}"
                                      oncomplete="PF('widDialLocal').show()" onclick="PF('widDialCarro').hide()"/>
@@ -35,15 +42,18 @@
                <p:dialog id="dialLocal" visible="false" resizable="false" modal="false"
                          widgetVar="widDialLocal" header="Cadastro do endereço">
                 <p:tab>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" >
                         <h:outputText value="Estado *" />
-                        <p:inputText value="#{localController.cadLocal.estado}"/>
+                        <p:inputText value="#{localController.cadLocal.estado}"
+                                     required="true" requiredMessage="Digite o estado em que voce reside"/>
 
                         <h:outputText value="Cidade *"/>
-                        <p:inputText value="#{localController.cadLocal.cidade}"/>
+                        <p:inputText value="#{localController.cadLocal.cidade}"
+                                     required="true" requiredMessage="Digite a cidade em que voce reside"/>
 
                         <h:outputText value="CEP *"/>
                         <p:inputText value="#{localController.cadLocal.cep}"/>
+                        <p:messages/>
                     </p:panelGrid>
                     <p:commandButton value="Next" action="#{localController.cadastrar()}"
                                      oncomplete="PF('widDialMotorista').show()" onclick="PF('widDialLocal').hide()"/>
@@ -57,8 +67,8 @@
                 <p:tab>
                     <p:panelGrid columns="2">
                         <h:outputText value="Nome *"/>
-                        <p:inputText value="#{motoristaController.cadMotorista.nome}" required="true"/>
-
+                        <p:inputText id="txtNomeMoto" value="#{motoristaController.cadMotorista.nome}" required="true"/>
+                        
                         <h:outputText value="CPF *"/>
                         <p:inputText value="#{motoristaController.cadMotorista.cpf}" required="true"/>
 

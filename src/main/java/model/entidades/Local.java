@@ -103,8 +103,6 @@ public class Local implements Serializable {
         return true;
     }
     
-
-
     @Override
     public String toString() {
         return "Local{" + "id_local=" + id_local + ", estado=" + estado + ", cidade=" + cidade + ", cep=" + cep + '}';

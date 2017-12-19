@@ -53,7 +53,8 @@
                         <h:outputText value="#{viagemController.selectedViagem.motorista.email}"/>
 
                     </p:panelGrid>
-                    <p:commandButton value="Visualizar endereço" oncomplete="PF('widDialVisualizaEndereco').show()"/>
+                    <p:commandButton value="Visualizar endereço de destino" oncomplete="PF('widDialVisualizaEndereco').show()"/>
+                    <p:commandButton value="Visualizar endereço de partida" oncomplete="PF('widDialVisualizaEnderecoPartida').show()"/>
                     <p:commandButton value="Visualizar passageiros" oncomplete="PF('widDialVisualizaPassageiro').show()"/>
                 </p:tab>
             </p:fieldset>
@@ -62,6 +63,28 @@
 
         <p:dialog visible="false" id="dialVisualizaEndereco" modal="true"
                   resizable="false" widgetVar="widDialVisualizaEndereco">
+            <p:fieldset>
+                <p:tab>
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Estado"/>
+                        <h:outputText value="#{viagemController.selectedViagem.local.estado}"/>
+
+                        <h:outputText value="Cidade"/>
+                        <h:outputText value="#{viagemController.selectedViagem.local.cidade}"/>
+
+                        <h:outputText value="CEP"/>
+                        <h:outputText value="#{viagemController.selectedViagem.local.cep}"/>
+
+
+                    </p:panelGrid>
+                </p:tab>
+            </p:fieldset>
+            
+        </p:dialog>
+         
+                  
+         <p:dialog visible="false" id="dialVisualizaEnderecoPartida" modal="true"
+                  resizable="false" widgetVar="widDialVisualizaEnderecoPartida">
             <p:fieldset>
                 <p:tab>
                     <p:panelGrid columns="2">
@@ -78,8 +101,7 @@
                     </p:panelGrid>
                 </p:tab>
             </p:fieldset>
-
-        </p:dialog>
+            </p:dialog>
         
             <p:dialog visible="false" id="dialAdicionarPassageiro" modal="true"
                       resizable="false" widgetVar="widDialAdicionaPassageiro">
@@ -99,8 +121,7 @@
                                      oncomplete="PF('widDialAdicionaPassageiro').hide()"/>
 
                 </p:tab>
-            </p:dialog>
-        
+        </p:dialog>
             <p:dialog visible="false" id="dialVisualizaPassageiro" modal="true"
                       resizable="false" widgetVar="widDialVisualizaPassageiro">
                 <p:dataTable id="tablePass" rows="5" var="pass" value="#{viagemController.selectedViagem.passageiros}"

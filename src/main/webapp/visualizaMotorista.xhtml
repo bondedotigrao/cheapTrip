@@ -16,13 +16,13 @@
         <c:if test="${loginMotorista.motoristaLogado == null}">
             <script>location.href = "loginMotorista.xhtml";</script>
         </c:if>
-        
+
         <h:form>
-            
+
             <p:fieldset>
-                
+
                 <p:panelGrid columns="2" columnClasses="label, values">
-                    
+
                     <h:outputText value="Nome"/>
                     <h:outputText value="#{loginMotorista.motoristaLogado.nome}" />
 
@@ -33,10 +33,10 @@
                 <p:commandButton value="Visualizar" oncomplete="PF('widDialVisualizaMotorista').show()"/>
                 <p:commandButton value="Alterar dados do motorista" action="alteraMotorista.xhtml"/>
                 <p:commandButton icon="fa-trash-o" value="Deletar" oncomplete="PF('widDialDeletaMotorista').show()"/>
-                
+
             </p:fieldset>
         </h:form>
-        
+
         <h:form>
             <p:dialog id="dialVisualizaMotorista" visible="false" modal="true" resizable="false" draggable="false"
                       widgetVar="widDialVisualizaMotorista" >
@@ -53,13 +53,16 @@
                     <h:outputText value="Email : "/>
                     <h:outputText value="#{loginMotorista.motoristaLogado.email}"/>
 
+                </p:panelGrid>
+                <p:fieldset>                   
                     <p:commandButton value="Visualizar Endereço" oncomplete="PF('widDialVisualizaEnderecoMotorista').show()" 
                                      update="dialEndereco"/>
-
+                    <p:commandButton value="Visualizar o Carro" oncomplete="PF('widDialVisualizaCarro').show()"/>
                     <p:commandButton value="Voltar" oncomplete="PF('widDialVisualizaMotorista').hide()"/>
 
-                </p:panelGrid>
+                </p:fieldset>
             </p:dialog>
+
 
             <p:dialog id="dialEndereco" visible="false" modal="true" resizable="false" draggable="false"
                       widgetVar="widDialVisualizaEnderecoMotorista">
@@ -83,8 +86,26 @@
                 <p:commandButton value="Sim" action="#{motoristaController.deletar(loginMotorista.motoristaLogado)}" oncomplete="PF('widDialDeletaMotorista').hide()"/>
                 <p:commandButton value="Não" oncomplete="PF('widDialDeletaMotorista').hide()"/>
             </p:dialog>
-        </h:form>
 
+            <p:dialog id="dialVisualizaCarro" visible="false" modal="true" resizable="false"
+                      widgetVar="widDialVisualizaCarro">
+                <p:fieldset>
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Marca"/>
+                        <h:outputText value="#{loginMotorista.motoristaLogado.carro.marca}"/>
+
+                        <h:outputText value="Modelo"/>
+                        <h:outputText value="#{loginMotorista.motoristaLogado.carro.modelo}"/>
+
+                        <h:outputText value="Placa"/>
+                        <h:outputText value="#{loginMotorista.motoristaLogado.carro.placa}"/>
+
+                        <p:commandButton value="Voltar para o motorista" oncomplete="PF('widDialVisualizaCarro').hide()"/>
+                    </p:panelGrid>
+                </p:fieldset>
+            </p:dialog>
+
+        </h:form>
     </h:body>
 </html>
 

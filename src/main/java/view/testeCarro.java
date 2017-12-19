@@ -14,11 +14,8 @@ import model.negocio.ViagemDAO;
  */
 public class testeCarro {
     public static void main(String args[]){
-        Passageiro p = (Passageiro) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("passageiroLogado");
-       List<Viagem> viagens = new ViagemDAO().recuperarPorDestino(p.getLocal());
-       for(Viagem v1 : viagens){
-               System.out.println("s");
-           }
+   
+          
     }
 
 }

@@ -8,5 +8,4 @@ import model.entidades.Motorista;
  */
 public interface MotoristaInterfaceDAO extends DAO<Motorista> {
     boolean login(String login,String senha);
-    Motorista recuperarPorCpf(String cpf);
 }

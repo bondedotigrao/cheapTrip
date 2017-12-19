@@ -45,7 +45,7 @@ public class PassageiroController {
     public String deletar(Passageiro passageiro){
         this.passageiroHibernate.deletar(passageiro);
         
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O passageiro " + this.selectedPassageiro.getNome() + " foi deletado"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O passageiro  foi deletado"));
 
         return "index.xhtml";
     }
@@ -53,10 +53,7 @@ public class PassageiroController {
     public List<Passageiro> recuperarTodos(){
         return this.passageiroHibernate.recuperarTodos();
     }
-    
-    public Passageiro recuperarPorCpf(){
-        return this.passageiroHibernate.recuperarPorCpf(this.selectedPassageiro.getCpf());
-    }
+
     public Passageiro getCadPassageiro() {
         return cadPassageiro;
     }

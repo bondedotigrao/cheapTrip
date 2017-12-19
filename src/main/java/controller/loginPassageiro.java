@@ -46,7 +46,7 @@ public class loginPassageiro {
     
       public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        
+        this.passageiroLogado = null;
         return "index.xhtml";
     }
     

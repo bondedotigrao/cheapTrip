@@ -9,7 +9,6 @@ import model.entidades.Carro;
 import model.entidades.Local;
 import model.entidades.Motorista;
 import model.negocio.MotoristaDAO;
-import org.primefaces.event.FlowEvent;
 
 /**
  *
@@ -31,11 +30,11 @@ public class MotoristaController {
         this.cadMotorista.setLocal(local);
         this.cadMotorista.setCarro(carro);
 
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista cadastrado com sucesso!"));
         this.motoristaHibernate.cadastrar(this.cadMotorista);
 
         this.cadMotorista = new Motorista();
 
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Motorista cadastrado com sucesso!"));
 
         return "loginMotorista.xhtml";
     }

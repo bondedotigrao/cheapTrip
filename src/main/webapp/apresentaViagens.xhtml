@@ -10,6 +10,7 @@
     </h:head>
     <h:body>
          <ui:include src="index.xhtml"/>
+         <p:growl id="gro" sticky="true" showSummary="true" showDetail="true"/>
          
          <h:form>
             <p:dataTable id="tableViagem" var="viagem" value="#{viagemController.recuperarTodas()}" rows="5"

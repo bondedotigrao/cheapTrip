@@ -88,22 +88,6 @@ public class PassageiroHibernateDAO implements PassageiroInterfaceDAO {
     }
 
     @Override
-    public Passageiro recuperarPorCpf(String cpf) {
-           Session session = this.sessions.openSession();
-        
-        try{
-            return (Passageiro) session.createQuery("From Passageiro Where cpf=" + cpf).getResultList().get(0);
-        }catch(Exception recPassageiroError){
-            System.out.println(recPassageiroError.getCause()
-            + "\nOcorreu um erro ao recuperar um passageiro");
-        }finally{
-            session.close();
-        }
-        return null;
-
-    }
-
-    @Override
     public List<Passageiro> recuperarTodos() {
         Session session = this.sessions.openSession();
         List<Passageiro> passageiros = null;

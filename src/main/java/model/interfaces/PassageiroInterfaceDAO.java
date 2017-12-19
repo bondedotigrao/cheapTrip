@@ -8,5 +8,4 @@ import model.entidades.Passageiro;
  */
 public interface PassageiroInterfaceDAO extends DAO<Passageiro> {
     boolean login(String login,String senha);
-    Passageiro recuperarPorCpf(String cpf);
 }

@@ -123,17 +123,4 @@ public class MotoristaHibernateDAO implements MotoristaInterfaceDAO{
         }
         return false;
     }
-
-    @Override
-    public Motorista recuperarPorCpf(String cpf) {
-        List<Motorista> motoristas = this.recuperarTodos();
-        
-        for(Motorista moto : motoristas){
-            if(moto.getCpf().equals(moto)){
-                return moto;
-            }
-        }
-        
-        return null;
-    }
 }

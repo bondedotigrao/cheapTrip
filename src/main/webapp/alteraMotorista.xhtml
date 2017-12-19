@@ -33,8 +33,7 @@
                     <h:outputText value="Senha: "/>
                     <p:inputText value="#{loginMotorista.motoristaLogado.senha}" required="true"/>
                 </p:panelGrid>
-                <p:commandButton value="Alterar" action="#{motoristaController.alterar(loginMotorista.motoristaLogado.local
-                                                           ,loginMotorista.motoristaLogado.carro)}"/>
+                <p:commandButton value="Alterar" action="#{motoristaController.alterar(loginMotorista.motoristaLogado)}"/>
                 
                 <p:commandButton value="Alterar carro" action="alteraCarro.xhtml"/>
                 

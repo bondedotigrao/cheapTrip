@@ -35,7 +35,7 @@ public class CarroController {
         this.carroDao.alterar(this.selectedCarro);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Carro alterado com sucesso!"));
 
-        return "index.xhtml";
+        return "visualizaMotorista.xhtml";
     }
 
     public void deletar() {
