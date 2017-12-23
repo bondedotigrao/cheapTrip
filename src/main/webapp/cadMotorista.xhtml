@@ -55,6 +55,7 @@
                         <p:inputText value="#{localController.cadLocal.cep}"/>
                         <p:messages/>
                     </p:panelGrid>
+                    <p:commandButton value="Back" oncomplete="PF('widDialLocal').hide()" onclick="PF('widDialCarro').show()"/>
                     <p:commandButton value="Next" action="#{localController.cadastrar()}"
                                      oncomplete="PF('widDialMotorista').show()" onclick="PF('widDialLocal').hide()"/>
                 </p:tab> 
@@ -83,7 +84,7 @@
                         
 
                     </p:panelGrid>
-                    
+                    <p:commandButton value="Back" oncomplete="PF('widDialMotorista').hide()" onclick="PF('widDialLocal').show()"/>
                     <p:commandButton value="Cadastrar" action="#{motoristaController.cadastrar(localController.cadLocal,carroController.cadCarro)}"/>
                 </p:tab>
             </p:dialog>

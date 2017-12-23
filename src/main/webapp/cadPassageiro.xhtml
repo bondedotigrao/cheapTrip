@@ -57,6 +57,7 @@
 
 
                     </p:panelGrid>
+                    <p:commandButton value="Back" oncomplete="PF('widDialPassageiro').hide()" onclick="PF('widDialLocal').show()"/>
                     <p:commandButton value="Cadastrar" action="#{passageiroController.cadastrar(localController.cadLocal)}"/>
 
                 </p:tab>
